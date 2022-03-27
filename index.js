@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const { generateMarkdown } = require('./utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown');
 const { writeFile } = require('./utils/generateReadMe');
 
 // TODO: Create an array of questions for user input
@@ -12,6 +12,18 @@ const promptUser = () => {
             message: 'What is your GitHub username? (No @ is necessary) (Required)',
             validate: usernameInput => {
                 if (usernameInput) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is your email address? (Required)',
+            validate: emailInput => {
+                if (emailInput) {
                     return true;
                 } else {
                     return false;
